@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "name": "C-only",
+      "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+      "intelliSenseMode": "gcc-x64",
+      "cStandard": "c11",
+      "includePath": [
+        "C:/msys64/ucrt64/include",
+        "${workspaceFolder}/**"
+      ]
+    }
+  ],
+  "version": 4
+}
