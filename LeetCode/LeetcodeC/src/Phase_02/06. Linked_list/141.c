@@ -22,33 +22,28 @@
 // Explanation: There is no cycle in the linked list.
 #include <stdbool.h>
 
-#include <stdbool.h>
+
+// Không dùng stdbool.h, không dùng NULL
+// Trả về 1 nếu có vòng, 0 nếu không có vòng.
 
 struct ListNode {
     int val;
     struct ListNode *next;
 };
 
-// Đây chính là hàm hasCycle kinh điển
-bool hasCycle(struct ListNode *head) {
-    if (head == NULL || head->next == NULL) {
-        return false;
-    }
-    
+int hasCycle(struct ListNode *head) {
+    if (head == 0) return 0;  // 0 là null pointer constant
+
     struct ListNode *slow = head;
     struct ListNode *fast = head;
-    
-    // Điều kiện lặp: fast và fast->next phải tồn tại để fast có thể nhảy 2 bước
-    while (fast != NULL && fast->next != NULL) {
-        slow = slow->next;          // Rùa đi 1 bước
-        fast = fast->next->next;    // Thỏ đi 2 bước
-        
-        // Nếu Thỏ đuổi kịp Rùa, có vòng lặp
-        if (slow == fast) {
-            return true;
+
+    // Điều kiện dừng dùng so sánh với 0 thay cho NULL
+    while (fast != 0 && fast->next != 0) {
+        slow = slow->next;           // đi 1 bước
+        fast = fast->next->next;     // đi 2 bước
+        if (slow == fast) {          // gặp nhau => có vòng
+            return 1;
         }
     }
-    
-    // Nếu Thỏ về đích (NULL), không có vòng lặp
-    return false;
+    return 0;                        // tới null => không có vòng
 }

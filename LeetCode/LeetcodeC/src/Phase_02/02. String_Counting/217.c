@@ -1,5 +1,6 @@
 // 217. Contains Duplicate
-// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+// Given an integer array nums, return true if any value appears at least twice in the array, 
+// and return false if every element is distinct.
 
 // Example 1:
 // Input: nums = [1,2,3,1]
@@ -21,5 +22,22 @@
 #include <stdbool.h>
 
 bool containsDuplicate(int* nums, int numsSize) {
+    int largest = 0;
+    for (int i = 0; i < numsSize; i++)
+    {
+        if (nums[i] > largest)
+        {
+            largest = nums[i];
+        }
+    }
     
+    int* ans = (int*)calloc(largest + 1, sizeof(int));
+
+    for (int i = 0; i < numsSize; i++)
+    {
+        ans[nums[i]]++;
+        if(ans[nums[i]] > 1) return true;
+    }
+    
+    return false;
 }
